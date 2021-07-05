@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Forum</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <h1>{{forum.name}}</h1>
+        <h2>{{forum.description}}</h2>
+        <a href="/">back</a>
+        <div id="create_post">
+            <h3>Create a Forum Post</h3>
+            <form action="/create_forum_post" method='POST'>
+                {% csrf_token %}
+                <input type="text" name='post_content' placeholder="Content">
+                <input type="text" name='username' placeholder="Username">
+                <input type="hidden" name="forum_id" value={{forum.id}}>
+                <input type="submit" value="Create Post">
+            </form>
+        </div>
+
+        <div id="posts">
+            {% for forum_post in forum.all_forum_posts.all %}
+            <div class="post">
+                <p>{{forum_post.content}}</p>
+                <p>by: {{forum_post.username}}</p>
+                <p>{{forum_post.created_at}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>  
+</body>
+</html>

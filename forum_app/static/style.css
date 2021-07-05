@@ -1,0 +1,32 @@
+#wrapper {
+    width: 900px;
+    background-color: aqua;
+    margin: 0px auto;
+    padding: 25px;
+    font-family: sans-serif;
+}
+
+.content {
+    display: inline-block;
+    vertical-align: top;
+    width: 400px;
+    background-color: white;
+    height: 200px;
+}
+
+.content form input {
+    display: block;
+    margin: 25px;
+}
+
+#posts {
+    background-color: white;
+    padding: 25px;
+}
+
+.post {
+    background-color: aqua;
+    padding: 25px;
+    text-align: center;
+    margin: 25px;
+}

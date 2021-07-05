@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Forum</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div id="wrapper">
+        <h1>Welcome to the Forum Page!</h1>
+
+        <div class='content'>
+            <h2>All Forums:</h2>
+            <ul>
+                {% for forum in all_forums %}
+                <li><a href="/forum/{{forum.id}}">{{forum.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class='content'>
+            <form action="/create_forum" method="POST">
+                {% csrf_token %}
+                <input type="text" name="forum_name" placeholder="Forum Name">
+                <input type="text" name="forum_desc" placeholder="Description">
+                <input type="submit" value="Create">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
